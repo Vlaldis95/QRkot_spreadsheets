@@ -14,6 +14,7 @@
 *  Pydantic
 *  Alembic
 *  SQLAlchemy
+*  Google cloud platfom: Google Sheets Api, Google Drive Api
 
 ## Как запустить проект
 Клонировать репозиторий к себе на компьютер
@@ -60,7 +61,7 @@ uvicorn app.main:app --reload
 ```
 http://127.0.0.1:8000/docs
 ```
-#Чтобы добавить сохранение отчетов в Google Sheets:
+# Чтобы добавить сохранение отчетов в Google Sheets:
 Необходимо в .env прописать следующие ключи:
 ```
 TYPE
