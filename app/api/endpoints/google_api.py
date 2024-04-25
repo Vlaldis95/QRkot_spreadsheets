@@ -21,15 +21,15 @@ async def get_report(
         session: AsyncSession = Depends(get_async_session),
         wrapper_services: Aiogoogle = Depends(get_service)
 ):
-    """Только для суперюзеров. \n
+    """Только для суперюзеров.
     Формирование отчёта в гугл-таблице с отчетом о закрытых проектах,
     отсортированных в порядке скорости их закрытия"""
     projects = await charity_project_crud.get_projects_by_completion_rate(
         session
     )
-    spreadsheetid = await spreadsheets_create(wrapper_services)
-    await set_user_permissions(spreadsheetid, wrapper_services)
-    await spreadsheets_update_value(spreadsheetid,
+    spreadsheet_id = await spreadsheets_create(wrapper_services)
+    await set_user_permissions(spreadsheet_id, wrapper_services)
+    await spreadsheets_update_value(spreadsheet_id,
                                     projects,
                                     wrapper_services)
-    return f'Ссылка - https://docs.google.com/spreadsheets/d/{spreadsheetid}'
+    return f'Ссылка - https://docs.google.com/spreadsheets/d/{spreadsheet_id}'
